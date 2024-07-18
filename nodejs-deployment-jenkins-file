@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/hmssameer55/anime.git'
+            }
+        }
+        stage('install dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('run application') {
+            steps {
+                sh 'npm run dev'
+            }
+        }
+    }
+}
